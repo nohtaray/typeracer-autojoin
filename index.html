@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  ブックマークにドラッグ＆ドロップ→<a>autojoin</a>
+
+  <script id="source">
+(function() {
+  if (window._timer) return;
+
+  var joinRace = function() {
+    var joinLink = document.querySelector('.raceAgainLink');
+    if (joinLink && joinLink.getAttribute('aria-hidden') === 'false') {
+      joinLink.click();
+    }
+  };
+  var leaveRace = function() {
+    var leaveLink = document.querySelector('.navControls a[title*="Ctrl+Alt+J"]');
+    if (leaveLink && leaveLink.getAttribute('aria-hidden') === 'false') {
+      leaveLink.click();
+    }
+  };
+
+  window._timer = setInterval(function() {
+    joinRace();
+    setTimeout(function() {
+      leaveRace();
+    }, 2000);
+  }, 4000);
+})();
+  </script>
+  <script>
+    document.querySelector('a').href = 'javascript:' + document.querySelector('#source').textContent;
+  </script>
+</body>
+</html>
