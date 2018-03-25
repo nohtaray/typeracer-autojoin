@@ -12,13 +12,13 @@
 
   var joinRace = function() {
     var joinLink = document.querySelector('.raceAgainLink');
-    if (joinLink && joinLink.getAttribute('aria-hidden') === 'false') {
+    if (joinLink && joinLink.style.display !== 'none') {
       joinLink.click();
     }
   };
   var leaveRace = function() {
     var leaveLink = document.querySelector('.navControls a[title*="Ctrl+Alt+J"]');
-    if (leaveLink && leaveLink.getAttribute('aria-hidden') === 'false') {
+    if (leaveLink && leaveLink.style.display !== 'none') {
       leaveLink.click();
     }
   };
