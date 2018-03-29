@@ -9,7 +9,6 @@
   <script id="source">
 (function() {
   if (window._timer) return;
-
   var joinRace = function() {
     var joinLink = document.querySelector('.raceAgainLink');
     if (joinLink && joinLink.style.display !== 'none') {
@@ -22,8 +21,12 @@
       leaveLink.click();
     }
   };
+  var racing = function() {
+    return !!document.querySelector('.time[title="Time remaining"]');
+  };
 
   window._timer = setInterval(function() {
+    if (racing()) return;
     joinRace();
     setTimeout(function() {
       leaveRace();
